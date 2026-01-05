@@ -1,2 +1,5 @@
-# Don't track icons.
+# Don't track font or icons.
 assets/*
+
+# Ignore build files.
+*.pdf
