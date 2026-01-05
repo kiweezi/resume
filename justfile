@@ -1,6 +1,10 @@
-# Recompile the Typst document.
+# Recompile the Typst document to pdf.
 compile: make-folders
   export TYPST_FONT_PATHS=assets/fonts typst fonts && typst compile resume.typ assets/builds/resume.pdf
+
+# Recompile the Typst document to both pdf and png files.
+compile-all: compile
+  export TYPST_FONT_PATHS=assets/fonts typst fonts && typst compile --format png resume.typ assets/builds/resume.png
 
 # Install required fonts for Typst to compile the document.
 setup-fonts: make-folders

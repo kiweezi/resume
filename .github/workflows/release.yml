@@ -42,7 +42,7 @@ jobs:
       # Install fonts needed for the resume to compile correctly.
       - run: just setup-fonts
       # Compile the Typst document.
-      - run: just compile
+      - run: just compile-all
 
       # Create the GitHub release.
       # Test without creating a new release if changes have been made to release creation.
@@ -51,9 +51,9 @@ jobs:
         shell: pwsh
         run: |
           scripts/actions/New-GitHubRelease.ps1 `
-            -ChangeType "${{ inputs.type }}" `
+            -ChangeType "${{ inputs.type || 'revision' }}" `
             -Repository "${{ github.repository }}" `
-            -AssetPath "assets/builds/resume.pdf" `
+            -AssetPath "assets/builds/resume.pdf assets/builds/resume.png" `
             -WhatIf:$${{ github.event_name == 'pull_request' || 'false' }}
         env:
           GH_TOKEN: ${{ github.token }}
