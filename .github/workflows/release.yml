@@ -53,7 +53,7 @@ jobs:
           scripts/actions/New-GitHubRelease.ps1 `
             -ChangeType "${{ inputs.type || 'revision' }}" `
             -Repository "${{ github.repository }}" `
-            -AssetPath "assets/builds/resume.pdf assets/builds/resume.png" `
+            -AssetPath "./assets/builds/resume.*" `
             -WhatIf:$${{ github.event_name == 'pull_request' || 'false' }}
         env:
           GH_TOKEN: ${{ github.token }}
