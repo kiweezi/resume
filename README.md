@@ -15,7 +15,7 @@ Prep your local environment to modify and compile this resume.
 Otherwise you'll need the following components:
 
 - [Typst cli](https://github.com/typst/typst)
-- [Fira Sans](https://fonts.google.com/specimen/Fira+Sans) and [Font Awesome 7](https://fontawesome.com/download) fonts installed on your system, or placed a folder with the path `assets/fonts/*`
+- [Fira Sans](https://fonts.google.com/specimen/Fira+Sans) and [Font Awesome 7](https://fontawesome.com/download) fonts installed on your system, or placed in a folder with the path `assets/fonts/*`
 - [Just](https://github.com/casey/just) - or you can simply copy and run the scripts in the [justfile](justfile)
 
 ## Usage
