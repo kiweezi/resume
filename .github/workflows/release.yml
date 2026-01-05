@@ -42,11 +42,10 @@ jobs:
       - name: Create release
         shell: pwsh
         run: |
-          ./New-GitHubRelease.ps1 `
+          scripts/actions/New-GitHubRelease.ps1 `
             -ChangeType "${{ inputs.type }}" `
             -Repository "${{ github.repository }}" `
-            -AssetPath "./resume.pdf" `
+            -AssetPath "assets/builds/resume.pdf" `
             -WhatIf:$${{ github.event_name == 'pull_request' || 'false' }}
         env:
           GH_TOKEN: ${{ github.token }}
-        working-directory: scripts/actions
