@@ -1,0 +1,42 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+	"name": "main",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:bookworm",
+
+	"features": {
+		// "ghcr.io/devcontainers-extra/features/typst:1": {}
+		"ghcr.io/michidk/devcontainers-features/typst:1": {}
+	},
+
+	"customizations": {
+		"vscode": {
+			"settings": {
+				// Git settings.
+				"git.path": "/usr/bin/git",
+
+				// Helps with some annoying warnings in vscode-icons.
+				"workbench.iconTheme": "vscode-icons",
+				"vsicons.dontShowNewVersionMessage": true,
+
+				// Allow TinyMist to find custom fonts/icons.s
+				"tinymist.fontPaths": [
+					"/workspaces/${workspaceFolderBasename}/assets/icons"
+				]
+			},
+			"extensions": [
+				"myriad-dreamin.tinymist",
+				"tomoki1207.pdf",
+				"vscode-icons-team.vscode-icons",
+				"streetsidesoftware.code-spell-checker"
+			]
+		}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": {
+		"dir": "mkdir -p assets/fonts",
+		"fira-sans": "wget -O fira-sans.zip https://www.1001fonts.com/download/fira-sans.zip && unzip -o fira-sans.zip -d assets/fonts/fira-sans && rm fira-sans.zip",
+		"fontawesome": "wget -O fontawesome.zip https://use.fontawesome.com/releases/v7.1.0/fontawesome-free-7.1.0-desktop.zip && unzip -o fontawesome.zip -d assets/fonts && rm fontawesome.zip"
+	}
+}

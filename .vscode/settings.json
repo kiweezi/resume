@@ -1,0 +1,27 @@
+// Workspace settings for this repository.
+// They override default and user settings.
+{
+  // Git settings.
+  "git.autofetch": true,
+  "git.confirmSync": false,
+
+  // Set tab size to common default.
+  "editor.tabSize": 2,
+  // Set default end of line to LF. It's super important
+  // for everyone to have this set to the same value.
+  "files.eol": "\n",
+  // Trim trailing whitespace on save.
+  "files.trimTrailingWhitespace": true,
+
+  // Associate Tailscale .hujson format for policy file.
+  // https://github.com/tailscale/hujson?tab=readme-ov-file#visual-studio-code-association
+  "files.associations": {
+    "*.hujson": "jsonc"
+  },
+  "json.schemas": [{
+    "fileMatch": ["*.hujson"],
+    "schema": {
+      "allowTrailingCommas": true
+    }
+  }]
+}

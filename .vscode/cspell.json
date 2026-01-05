@@ -1,0 +1,19 @@
+// cSpell Settings
+{
+  // Version of the setting file.  Always 0.2
+  "version": "0.2",
+  // language - current active spelling language
+  "language": "en",
+  // Only enable spell check in markdown files.
+  "enabledFileTypes": {
+    "*": false,
+    // Workaround for: https://github.com/streetsidesoftware/vscode-spell-checker/issues/3836#issuecomment-2577907885
+    "markdown": true
+  },
+  // words - list of words to be always considered correct
+  // Use this as a custom dictionary.
+  "words": [],
+  // flagWords - list of words to be always considered incorrect
+  // This is useful for offensive words and common spelling errors.
+  "flagWords": []
+}
