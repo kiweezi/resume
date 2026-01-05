@@ -1,0 +1,52 @@
+name: Create release
+
+on:
+  workflow_dispatch:
+    inputs:
+      # The name of the tag to create.
+      type:
+        description: "Change type"
+        default: "revision"
+        type: choice
+        options:
+          - major
+          - minor
+          - revision
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+    branches:
+      - 'main'
+    paths:
+      - '.github/workflows/release.yml'
+  render-paper:
+    runs-on: ubuntu-latest
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Install Typst and Just.
+      - uses: typst-community/setup-typst@v4
+      - uses: extractions/setup-just@v3
+
+      # Install fonts needed for the resume to compile correctly.
+      - run: just setup-fonts
+      # Compile the Typst document.
+      - run: just compile
+
+      # Create the GitHub release.
+      # Test without creating a new release if changes have been made to release creation.
+      # The extra '$' for 'WhatIf' is deliberate. It creates a boolean recognised by PowerShell.
+      - name: Create release
+        shell: pwsh
+        run: |
+          ./New-GitHubRelease.ps1 `
+            -ChangeType "${{ inputs.type }}" `
+            -Repository "${{ github.repository }}" `
+            -AssetPath "./resume.pdf" `
+            -WhatIf:$${{ github.event_name == 'pull_request' || 'false' }}
+        working-directory: scripts/actions
