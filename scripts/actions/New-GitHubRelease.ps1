@@ -32,7 +32,7 @@ param (
   $Repository,
   [Parameter()]
   [string]
-  $AssetPath = "assets/builds/resume.pdf",
+  $AssetPath = "./assets/builds/resume.*",
   [Parameter()]
   [switch]
   $WhatIf
