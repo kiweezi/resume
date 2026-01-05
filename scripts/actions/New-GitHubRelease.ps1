@@ -51,6 +51,12 @@ function Get-CurrentTag {
     Write-Output $_
   }
 
+  # If there are no releases, return v0.0.0 to initiate the first release.
+  if (-not $releaseList) {
+    Write-Debug "No releases found in the repository. Starting from v0.0.0."
+    return "v0.0.0"
+  }
+
   # Get the latest release tag and return it.
   foreach ($release in $releaseList) {
     if ($release.contains("Latest")) {
