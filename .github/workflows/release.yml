@@ -47,4 +47,6 @@ jobs:
             -Repository "${{ github.repository }}" `
             -AssetPath "./resume.pdf" `
             -WhatIf:$${{ github.event_name == 'pull_request' || 'false' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
         working-directory: scripts/actions
