@@ -5,8 +5,8 @@
 	"image": "mcr.microsoft.com/devcontainers/base:bookworm",
 
 	"features": {
-		// "ghcr.io/devcontainers-extra/features/typst:1": {}
-		"ghcr.io/michidk/devcontainers-features/typst:1": {}
+		"ghcr.io/michidk/devcontainers-features/typst:1": {},
+		"ghcr.io/guiyomh/features/just:0": {}
 	},
 
 	"customizations": {
@@ -19,24 +19,24 @@
 				"workbench.iconTheme": "vscode-icons",
 				"vsicons.dontShowNewVersionMessage": true,
 
-				// Allow TinyMist to find custom fonts/icons.s
+				// Allow TinyMist to find custom fonts/icons.
 				"tinymist.fontPaths": [
-					"/workspaces/${workspaceFolderBasename}/assets/icons"
+					"/workspaces/${workspaceFolderBasename}/assets/fonts"
 				]
 			},
 			"extensions": [
 				"myriad-dreamin.tinymist",
-				"tomoki1207.pdf",
+				"nefrob.vscode-just-syntax",
 				"vscode-icons-team.vscode-icons",
 				"streetsidesoftware.code-spell-checker"
 			]
 		}
 	},
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": {
+	// Install fonts before the first use of the container.
+	"onCreateCommand": {
 		"dir": "mkdir -p assets/fonts",
-		"fira-sans": "wget -O fira-sans.zip https://www.1001fonts.com/download/fira-sans.zip && unzip -o fira-sans.zip -d assets/fonts/fira-sans && rm fira-sans.zip",
-		"fontawesome": "wget -O fontawesome.zip https://use.fontawesome.com/releases/v7.1.0/fontawesome-free-7.1.0-desktop.zip && unzip -o fontawesome.zip -d assets/fonts && rm fontawesome.zip"
+		"fira-sans": "wget -O assets/fonts/fira-sans.zip https://www.1001fonts.com/download/fira-sans.zip && unzip -o assets/fonts/fira-sans.zip -d assets/fonts/fira-sans && rm assets/fonts/fira-sans.zip",
+		"fontawesome": "wget -O assets/fonts/fontawesome.zip https://use.fontawesome.com/releases/v7.1.0/fontawesome-free-7.1.0-desktop.zip && unzip -o assets/fonts/fontawesome.zip -d assets/fonts && rm assets/fonts/fontawesome.zip"
 	}
 }
